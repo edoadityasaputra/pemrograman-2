@@ -1,67 +1,101 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>Aplikasi Administrasi Nilai - UNPAM</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Aplikasi Administrasi Nilai UNPAM</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1B5E20, #4CAF50);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            width: 400px;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .login-container h1 {
+            color: #2E7D32;
+            margin-bottom: 10px;
+        }
+
+        .login-container h4 {
+            color: #666;
+            margin-bottom: 30px;
+            font-weight: normal;
+        }
+
+        .login-container input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .login-container button {
+            width: 100%;
+            padding: 12px;
+            background: #2E7D32;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .login-container button:hover {
+            background: #1B5E20;
+            transform: translateY(-2px);
+        }
+
+        .error {
+            color: red;
+            margin-top: 10px;
+            display: none;
+        }
+    </style>
 </head>
 <body>
+    <div class="login-container">
+        <h1>UNIVERSITAS PAMULANG</h1>
+        <h4>Aplikasi Administrasi Nilai</h4>
+        <h4>Fakultas Ilmu Komputer - Teknik Informatika</h4>
+        <input type="text" id="username" placeholder="Username">
+        <input type="password" id="password" placeholder="Password">
+        <button onclick="login()">Login</button>
+        <div id="errorMsg" class="error">Username atau password salah!</div>
+    </div>
 
-<center>
-    <table width="900" border="0">
-        
-        <!-- Header Table -->
-        <tr height="150">
-            <td colspan="2" align="center">
-                <br>
-                <h2 style="margin-bottom:0px; margin-top:0px;">Informasi Nilai Mahasiswa</h2>
-                <h1 style="margin-bottom:0px; margin-top:0px;">UNIVERSITAS PAMULANG</h1>
-                <h4 style="margin-bottom:0px; margin-top:0px;">
-                    Jl. Surya Kencana No. 1 Pamulang, Tangerang Selatan, Banten
-                </h4>
-                <br>
-            </td>
-        </tr>
-        
-        <!-- Menu dan Konten -->
-        <tr height="400">
-            <!-- Sidebar Menu -->
-            <td width="200" align="center" valign="top" bgcolor="#eeffee">
-                <br>
-                <div id="menu">
-                    <nav>
-                        <ul>
-                            <li><a href="#">Beranda</a></li>
-                            <li><a href="#">Data Mahasiswa</a></li>
-                            <li><a href="#">Data Dosen</a></li>
-                            <li><a href="#">Data Mata Kuliah</a></li>
-                            <li><a href="#">Input Nilai</a></li>
-                            <li><a href="#">Laporan Nilai</a></li>
-                        </ul>
-                    </nav>
-                </div>
-            </td>
+    <script>
+        function login() {
+            let username = document.getElementById('username').value;
+            let password = document.getElementById('password').value;
             
-            <!-- Konten Utama -->
-            <td width="700" align="center" valign="top" bgcolor="#ffffff">
-                <br>
-                <h3>Selamat Datang di Aplikasi Administrasi Nilai</h3>
-                <p>Sistem Informasi Pengelolaan Nilai Mahasiswa</p>
-                <p>Fakultas Ilmu Komputer - Teknik Informatika</p>
-                <br>
-                <img src="https://via.placeholder.com/400x200?text=UNPAM" alt="UNPAM" width="400" height="200">
-            </td>
-        </tr>
-        
-        <!-- Footer -->
-        <tr height="50">
-            <td colspan="2" align="center" bgcolor="#dddddd">
-                <b>&copy; 2024 - Teknik Informatika Universitas Pamulang</b>
-            </td>
-        </tr>
-        
-    </table>
-</center>
-
+            if(username === "admin" && password === "admin123") {
+                localStorage.setItem('loggedIn', 'true');
+                window.location.href = "dashboard.html";
+            } else {
+                document.getElementById('errorMsg').style.display = 'block';
+            }
+        }
+    </script>
 </body>
 </html>
